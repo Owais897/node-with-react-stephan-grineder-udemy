@@ -1,7 +1,7 @@
 const express = require("express");
 const app = new express();
 
-app.get("https://pacific-oasis-39607.herokuapp.com/", (req, res) => {
+app.get("/", (req, res) => {
   res.send({ hi: "there" });
 });
 
