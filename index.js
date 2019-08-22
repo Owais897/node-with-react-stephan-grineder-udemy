@@ -1,9 +1,9 @@
 const express = require("express");
 const app = new express();
 
-app.get("/", (req, res) => {
+app.get("https://pacific-oasis-39607.herokuapp.com/", (req, res) => {
   res.send({ hi: "there" });
 });
 
-const PROP = 5000;
-app.listen(5000);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT);
