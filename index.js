@@ -5,9 +5,16 @@ const passport = require("passport");
 const keys = require("./config/keys");
 require("./models/User");
 require("./services/passport");
+// const a =
+//   " mongodb+srv://owaisprod:owais123@cluster0-cslof.mongodb.net/test?retryWrites=true&w=majority";
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
+// console.log("keys.mongoURI", keys.mongoURI);
+console.log("client id in index", keys.googleClientID);
 
-mongoose.connect(keys.mongoURI);
-
+const connection = mongoose.connection;
+connection.once("open", () => {
+  console.log("connection established test");
+});
 const app = new express();
 
 app.use(
@@ -29,12 +36,3 @@ app.listen(PORT);
 
 // const authRoutes = require("./routes/authRoutes");
 // authRoutes(app);
-
-// cookie session store all the data directly on the cookie
-// express session store all of the data in some like remote server and then call it when request come in it take the id out of it and goes and pull all the rows and data
-
-// in expressSession all the data is put outside the cookie
-// in cookie session all the data is put inside the cookie
-
-// express unlimited Data
-// cookie 4kb

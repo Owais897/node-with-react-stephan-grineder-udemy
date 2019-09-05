@@ -1,3 +1,6 @@
+// var clientID;
+// console.log("client id in passport", clientID);
+
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const mongoose = require("mongoose");
