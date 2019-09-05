@@ -1,6 +1,7 @@
-if (process.env.NODE_ENV == "production") {
+if (process.env.NODE_ENV === "production") {
   //we are in production return the prod set of keys
   module.exports = require("./prod");
+  console.log("cookie key", this.cookieKey);
 } else {
   // we are in development return the dev keys
   module.exports = require("./dev");
