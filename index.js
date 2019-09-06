@@ -5,10 +5,12 @@ const passport = require("passport");
 const keys = require("./config/keys");
 require("./models/User");
 require("./services/passport");
-// const a =
-//   " mongodb+srv://owaisprod:owais123@cluster0-cslof.mongodb.net/test?retryWrites=true&w=majority";
-mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
-// console.log("keys.mongoURI", keys.mongoURI);
+const b = keys.mongoURI;
+const a =
+  " mongodb+srv://owaisprod:owais123@cluster0-cslof.mongodb.net/test?retryWrites=true&w=majority";
+mongoose.connect(b, { useNewUrlParser: true });
+console.log("keys.mongoURI b->", keys.mongoURI);
+console.log("a->", a);
 console.log("client id in index", keys.googleClientID);
 
 const connection = mongoose.connection;
