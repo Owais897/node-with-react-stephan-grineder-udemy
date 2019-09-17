@@ -26,21 +26,29 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        if (existingUser) {
-          done(null, existingUser);
-        } else {
-          // .save is for saving it to mongodb server
-          new User({ googleId: profile.id })
-            .save()
-            .then(user => done(null, user));
-        }
-      });
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ googleId: profile.id });
 
-      // console.log("access token", accessToken);
-      // console.log("refresh token ", refreshToken);
-      // console.log("profile ", profile);
+      if (existingUser) {
+        return done(null, existingUser);
+      }
+      // .save is for saving it to mongodb server
+      const user = await new User({ googleId: profile.id }).save();
+      done(null, user);
     }
   )
 );
+
+// (accessToken, refreshToken, profile, done) => {
+//   User.findOne({ googleId: profile.id }).then(existingUser => {
+//     if (existingUser) {
+//       done(null, existingUser);
+//     } else {
+//       // .save is for saving it to mongodb server
+//       new User({ googleId: profile.id })
+//         .save()
+//         .then(user => done(null, user));
+//     }
+//   });
+
+// }
