@@ -8,6 +8,11 @@ import reduxThunk from "redux-thunk";
 import App from "./components/App";
 import reducers from "./reducers";
 
+//   this is done for testing routes of backend on server
+// development only axios helper
+import axios from "axios";
+window.axios = axios;
+
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 ReactDOM.render(
   <Provider store={store}>
@@ -15,6 +20,3 @@ ReactDOM.render(
   </Provider>,
   document.querySelector("#root")
 );
-
-console.log("stripe key is ", process.env.REACT_APP_STRIPE_KEY);
-console.log("envoirnment  is ", process.env.NODE_ENV);

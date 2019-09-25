@@ -5,15 +5,13 @@ const passport = require("passport");
 const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 
 const b = keys.mongoURI;
-const a =
-  " mongodb+srv://owaisprod:owais123@cluster0-cslof.mongodb.net/test?retryWrites=true&w=majority";
+mongoose.Promise = global.Promise;
 mongoose.connect(b, { useNewUrlParser: true });
 console.log("keys.mongoURI b->", keys.mongoURI);
-console.log("a->", a);
-console.log("client id in index", keys.googleClientID);
 
 const connection = mongoose.connection;
 connection.once("open", () => {
@@ -32,6 +30,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   //express will serve up production assets
