@@ -19,6 +19,7 @@ module.exports = app => {
     res.send(surveys);
   });
   app.get("/api/surveys/:surveyId/:choice", (req, res) => {
+    app.post("http://localhost:5000/api/surveys/:surveyId/:choice");
     console.log("inside thanks for voting");
     res.send("Thanks for voting!");
   });
