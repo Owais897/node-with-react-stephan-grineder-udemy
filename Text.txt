@@ -1,1 +1,10 @@
-isme hum form bhejain ge mail pe aur uspe survey lainge aur phr polls ka result
+I will be doing surveys with web forms and generate result of surveys
+technologies:
+-Node
+-React
+-Redux
+-Express
+-Mongo
+-Google Aouth
+-Stripe
+-Send grid
